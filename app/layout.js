@@ -1,4 +1,5 @@
 import './globals.css';
+import { AppProvider } from './context/AppContext';
 
 export const metadata = {
   title: 'CST Canteen',
@@ -9,7 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {children}
+        <AppProvider>
+          {children}
+        </AppProvider>
       </body>
     </html>
   );
