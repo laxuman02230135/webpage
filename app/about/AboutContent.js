@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 
 export default function AboutContent() {
-  const { cart, setCart, removeFromCart } = useApp();
+  const { cart, setCart, removeFromCart, isLoggedIn } = useApp();
   const [cartVisible, setCartVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -135,109 +135,49 @@ export default function AboutContent() {
   };
 
   return (
-    <>
-      <nav className="navbar">
-        <div className="logo">
-          <img
-            src="https://st4.depositphotos.com/16061158/39264/v/450/depositphotos_392644810-stock-illustration-food-vector-icon-food-editable.jpg"
-            alt="Canteen Logo"
-          />
-        </div>
-        <ul className="nav-links">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/menu">Menu</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-          <li><Link href="/faq">FAQ</Link></li>
-        </ul>
-        <div className="nav-icons">
-          <form action="https://www.google.com/search" method="GET" id="nav-form">
-            <input type="text" placeholder="Search Here" name="q" />
-            <button type="submit"><i className="fas fa-search"></i></button>
-          </form>
-        </div>
-        <div className="menu-icon" id="menu-icon" onClick={toggleMenu}>
-          <i className="fas fa-bars"></i>
-        </div>
-      </nav>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">About CST Canteen</h1>
+      
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
+        <p className="text-gray-600 mb-4">
+          CST Canteen was founded with a simple mission: to provide delicious, affordable food
+          to our community while maintaining the highest standards of quality and service.
+        </p>
+      </section>
 
-      <header>
-        <div className="container">
-          <h1 className="page-title">About CST Canteen</h1>
-          <p className="subtitle">Nourishing Minds and Bodies Across Campus</p>
-        </div>
-      </header>
-
-      <section className="our-story">
-        <div className="container">
-          <h2 className="section-title">Our Story</h2>
-          <div className="story-container">
-            <div className="story-image">
-              <img src="/Images/cstCanteen.png" alt="CST Canteen Interior" />
-            </div>
-            <br /><br />
-            <div className="story-content">
-              <h3>Serving the CST Community</h3>
-              <p>The CST Canteen was established in 2015 with a simple mission: to provide nutritious, delicious, and affordable meals to students and faculty in a welcoming environment that promotes community bonding and academic success.</p>
-              <p>What began as a basic food service has evolved into a comprehensive dining experience. Recognizing the challenges students faced with long lines and limited time between classes, we launched our Easy Food System in 2023 - revolutionizing the campus dining experience through technology.</p>
-              <p>Today, our digital ordering system allows the entire campus community to browse menus, place orders, and make payments online, with their meals ready for pickup at their convenience. We've transformed from just a place to eat into an essential part of campus life and academic efficiency.</p>
-            </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Quality</h3>
+            <p className="text-gray-600">
+              We source the freshest ingredients and prepare each dish with care.
+            </p>
           </div>
-
-          <div className="milestone-grid">
-            <div className="milestone"><div className="year">2015</div><div className="event">CST Canteen Opens Its Doors</div></div>
-            <div className="milestone"><div className="year">2018</div><div className="event">Menu Expansion to Include Local Cuisine</div></div>
-            <div className="milestone"><div className="year">2021</div><div className="event">Nutritional Program Implementation</div></div>
-            <div className="milestone"><div className="year">2023</div><div className="event">Easy Food System Launch</div></div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Service</h3>
+            <p className="text-gray-600">
+              We believe in providing exceptional service to every customer.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="our-values">
-        <div className="container">
-          <h2 className="section-title">Our Values</h2>
-          <div className="values-container">
-            <div className="value-card"><div className="value-icon"><i className="fas fa-utensils"></i></div><h3>Quality</h3><p>We source fresh ingredients...</p></div>
-            <div className="value-card"><div className="value-icon"><i className="fas fa-seedling"></i></div><h3>Sustainability</h3><p>We're committed to eco-friendly practices...</p></div>
-            <div className="value-card"><div className="value-icon"><i className="fas fa-users"></i></div><h3>Community</h3><p>We create a welcoming dining environment...</p></div>
-            <div className="value-card"><div className="value-icon"><i className="fas fa-mobile-alt"></i></div><h3>Innovation</h3><p>Our Easy Food System represents...</p></div>
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Our Team</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl font-semibold mb-2">John Doe</h3>
+            <p className="text-gray-600">Head Chef</p>
           </div>
-        </div>
-      </section>
-
-      <section className="our-team">
-        <div className="container">
-          <h2 className="section-title">Meet Our Team</h2>
-          <div className="team-container">
-            <div className="team-member">
-              <div className="member-image"><img src="/Images/photo_2025-03-18_23-47-43.jpg" alt="Tashi Gyeltshen" /></div>
-              <div className="member-info">
-                <h3 className="member-name">Tashi Gyeltshen</h3>
-                <p className="member-position">Canteen Manager</p>
-                <p>Tashi brings 10 years of food service experience and a passion for creating nutritious meal options for students.</p>
-                <div className="social-icons"><a href="#"><i className="fab fa-linkedin-in"></i></a><a href="#"><i className="fab fa-instagram"></i></a></div>
-              </div>
-            </div>
-
-            <div className="team-member">
-              <div className="member-image"><img src="/Images/photo_2025-03-18_23-47-56.jpg" alt="Chimi Gyeltshen" /></div>
-              <div className="member-info">
-                <h3 className="member-name">Chimi Gyeltshen</h3>
-                <p className="member-position">Head Chef</p>
-                <p>Chimi is a culinary expert specializing in both international cuisine and traditional Bhutanese dishes</p>
-                <div className="social-icons"><a href="#"><i className="fab fa-linkedin-in"></i></a><a href="#"><i className="fab fa-instagram"></i></a></div>
-              </div>
-            </div>
-
-            <div className="team-member">
-              <div className="member-image"><img src="/Images/photo_2025-03-18_23-47-32.jpg" alt="Sonam Choejur" /></div>
-              <div className="member-info">
-                <h3 className="member-name">Sonam Choejur</h3>
-                <p className="member-position">Nutritionist</p>
-                <p>Sonam ensures all our meals are balanced and nutritious, helping students maintain healthy eating habits.</p>
-                <div className="social-icons"><a href="#"><i className="fab fa-linkedin-in"></i></a><a href="#"><i className="fab fa-instagram"></i></a></div>
-              </div>
-            </div>
+          <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl font-semibold mb-2">Jane Smith</h3>
+            <p className="text-gray-600">Manager</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl font-semibold mb-2">Mike Johnson</h3>
+            <p className="text-gray-600">Customer Service</p>
           </div>
         </div>
       </section>
@@ -370,6 +310,6 @@ export default function AboutContent() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 } 
