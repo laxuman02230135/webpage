@@ -178,7 +178,7 @@ export default function Menu() {
     const updatedCart = storedItems.map((item, index) => ({
       id: index,
       name: item.title,
-      price: parseInt(String(item.price).replace(/\D/g, '')) || 0,
+      price: parseFloat(String(item.price).replace('Nu. ', '')) || 0,
       image: item.image,
       quantity: 1,
       description: item.description,
@@ -188,8 +188,9 @@ export default function Menu() {
 
  const calculateTotal = (items) => {
   const sum = items.reduce((acc, item) => {
-    const priceStr = String(item.price); // Ensure it's a string
-    const price = parseInt(priceStr.replace(/[^0-9]/g, ''));
+    const priceStr = String(item.price);
+    // Extract only the numeric part after "Nu. " and convert to number
+    const price = parseFloat(priceStr.replace('Nu. ', '')) || 0;
     return acc + price;
   }, 0);
   setTotal(sum);
